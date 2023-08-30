@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <title>Благотворительный фонд</title>
+    <input type="text" class="balance-input-sum form-control" placeholder="Сумма пополнения">
+<button class="btn btn-primary addBalance">Оплатить</button>
+    <script type="text/javascript" src="http://widget.cloudpayments.ru/bundles/cloudpayments.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var payments = new cp.CloudPayments({
+          language: "ru-RU",
+          email: "",
+          applePaySupport: false,
+          googlePaySupport: true,
+          yandexPaySupport: true,
+          tinkoffInstallmentSupport: true,
+      });
+      
+      function checkout() {
+        payments.pay("charge", {
+          publicId: "ВАШ_ID",
+          description: "Тестовая оплата",
+          amount: 100,
+          currency: "RUB",
+          invoiceId: "",
+          accountId: "",
+          email: "",
+          skin: "classic",
+          requireEmail: true,
+        });
+      }
+      </script>
+    <div id="root"></div>
+  </body>
+</html>
